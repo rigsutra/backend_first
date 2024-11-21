@@ -7,8 +7,16 @@ const app = express();
 
 dotenv.config();
 
-connectDB();
-
+connectDB()
+  .then(() => {
+    app.listen(process.env.PORT || 8000, () => {
+      console.log("Server is running on port", process.env.PORT);
+    });
+  })
+  .catch((error) => {
+    console.error("MONGODB connection Failed", error);
+    throw error.message;
+  });
 // this is the code to connect to the database using a iffi function form the javascript
 
 /*(async () => {
