@@ -66,7 +66,7 @@ userSchema.methods.isPasswordCorrect = async function (password) {
 
 userSchema.methods.generateAccessToken = async function () {
   return jwt.sign(
-    //the first one is the payload and the secons one is the incryption key and the third one is the expriy time that is also comming from the process.env file
+    //the first one is the payload and the second one is the encryption key and the third one is the expriy time that is also comming from the process.env file
     {
       _id: this._id,
       username: this.username,
